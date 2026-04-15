@@ -1,15 +1,17 @@
 package tn.esprit.microservice.microfoyer.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserDto {
 
-    private String id;
-    private String name;
-    private String email;
-
+    String id;
+    String name;
+    String email;
+    String role;
 }
-

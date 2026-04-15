@@ -1,27 +1,21 @@
-package tn.esprit.microservice.microfoyer.entity;
+package tn.esprit.microservice.microfoyer.dto;
 
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.Date;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Reservation {
+public class ReservationWithUserDto {
 
-    @Id
     String idReservation;
-
-    @Temporal(TemporalType.DATE)
     Date anneeUniversitaire;
-
     boolean estValide;
 
-    // Référence vers l'utilisateur du microservice User (stocke juste l'ID)
-    String userId;
+    // Infos de l'utilisateur récupérées via Feign
+    UserDto user;
 }
