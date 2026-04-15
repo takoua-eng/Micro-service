@@ -58,11 +58,27 @@ public class GatewayApplication {
                         .uri("lb://cours-ms"))
 
                 //MS librairies
-                .route("TypeCategory", r -> r.path("/api/type-categories/**")
-                        // redirige vers le service typecategory
+                .route("books", r -> r.path("/api/books/**")
                         .uri("lb://bibliotheque"))
-                .route("Borrowing", r -> r.path("/api/borrowings/user/**")
+
+                .route("categories", r -> r.path("/api/categories/**")
                         .uri("lb://bibliotheque"))
+
+                .route("type-categories", r -> r.path("/api/type-categories/**")
+                        .uri("lb://bibliotheque"))
+
+                .route("borrowings", r -> r.path("/api/borrowings/**")
+                        .uri("lb://bibliotheque"))
+
+                .route("reservations", r -> r.path("/api/reservations/**")
+                        .uri("lb://bibliotheque"))
+
+                .route("notifications", r -> r.path("/api/notifications/**")
+                        .uri("lb://bibliotheque"))
+                .route("dashboard", r -> r.path("/api/dashboard/**")
+                        .uri("lb://bibliotheque"))
+
+
 
 
 
