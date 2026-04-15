@@ -51,11 +51,11 @@ public class GatewayApplication {
                 //MS Cours
 
                 .route("ms", r -> r.path("/api/courses/**")
-                        .uri("http://localhost:8081"))
+                        .uri("lb://cours-ms"))
 //                .route("Job", r -> r.path("/jobs/**")
 //                        .uri("http://localhost:8081"))
                 .route("cours-ms-extra", r -> r.path("/cours/**")
-                        .uri("http://localhost:8081"))
+                        .uri("lb://cours-ms"))
 
                 //MS librairies
                 .route("TypeCategory", r -> r.path("/api/type-categories/**")
