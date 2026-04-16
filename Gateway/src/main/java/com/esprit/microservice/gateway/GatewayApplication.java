@@ -19,15 +19,6 @@ public class GatewayApplication {
     }
 
     @Bean
-//    public RouteLocator gatewayRoutes(RouteLocatorBuilder builder){
-//        return builder.routes()
-//                .route("Candidat",r->r.path("/candidats/**")
-//                        .uri("http://localhost:8087") )
-//                .route("Job", r->r.path("/jobs/**")
-//                        .uri("http://localhost:8081") )
-//                .build();
-//    }
-
 
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder){
         return builder.routes()
@@ -35,8 +26,12 @@ public class GatewayApplication {
                 .route("Candidat", r -> r.path("/candidats/**")
                         .uri("lb://candidat"))
 
-                // MS Club
+                // MS Club & Sub-entities
                 .route("Club", r -> r.path("/clubs/**")
+                        .uri("lb://club"))
+                .route("Evenement", r -> r.path("/evenements/**")
+                        .uri("lb://club"))
+                .route("Membre", r -> r.path("/membres/**")
                         .uri("lb://club"))
                 //  MS Microfoyer (Reservation)
                 .route("microfoyer", r -> r.path("/reservation/**")
@@ -50,12 +45,8 @@ public class GatewayApplication {
 
                 //MS Cours
 
-                .route("ms", r -> r.path("/api/courses/**")
-                        .uri("http://localhost:8081"))
-//                .route("Job", r -> r.path("/jobs/**")
-//                        .uri("http://localhost:8081"))
-                .route("cours-ms-extra", r -> r.path("/cours/**")
-                        .uri("http://localhost:8081"))
+                .route("cours-ms", r -> r.path("/api/courses/**")
+                        .uri("lb://cours"))
 
                 //MS librairies
                 .route("TypeCategory", r -> r.path("/api/type-categories/**")
@@ -66,6 +57,10 @@ public class GatewayApplication {
 
 
 
+
+                //MS User
+                .route("User", r -> r.path("/users/**")
+                        .uri("lb://user-ms"))
 
                 .build();
     }
