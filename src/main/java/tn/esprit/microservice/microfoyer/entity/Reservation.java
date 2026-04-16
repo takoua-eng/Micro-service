@@ -24,4 +24,9 @@ public class Reservation {
 
     // Référence vers l'utilisateur du microservice User (stocke juste l'ID)
     String userId;
+
+    // Relation avec la Chambre réservée
+    @ManyToOne
+    @JoinColumn(name = "chambre_id")
+    Chambre chambre;
 }

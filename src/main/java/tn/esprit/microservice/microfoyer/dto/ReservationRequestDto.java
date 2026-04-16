@@ -10,15 +10,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ReservationWithUserDto {
+public class ReservationRequestDto {
 
-    String idReservation;
     Date anneeUniversitaire;
     boolean estValide;
-
-    // Infos de l'utilisateur récupérées via Feign
-    UserDto user;
-
-    // Infos de la chambre réservée
-    ChambreDto chambre;
+    String userId;
+    Long chambreId;
 }

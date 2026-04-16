@@ -1,5 +1,6 @@
 package tn.esprit.microservice.microfoyer.service.reservation;
 
+import tn.esprit.microservice.microfoyer.dto.ReservationRequestDto;
 import tn.esprit.microservice.microfoyer.dto.ReservationWithUserDto;
 import tn.esprit.microservice.microfoyer.dto.UserDto;
 import tn.esprit.microservice.microfoyer.entity.Reservation;
@@ -19,8 +20,10 @@ public interface IReservationService {
     List<UserDto> getAllUsers();
     UserDto getUserById(String id);
 
-    // Méthodes métier avec intégration User
-    Reservation createReservationForUser(String userId, Reservation reservation);
-    ReservationWithUserDto getReservationWithUser(String reservationId);
-    List<ReservationWithUserDto> getAllReservationsWithUsers();
+    // Méthodes métier avec intégration User + Chambre
+    Reservation createReservation(ReservationRequestDto request);
+    ReservationWithUserDto getReservationWithDetails(String reservationId);
+    List<ReservationWithUserDto> getAllReservationsWithDetails();
+    List<ReservationWithUserDto> getReservationsByUserId(String userId);
+    List<ReservationWithUserDto> getReservationsByChambreId(Long chambreId);
 }
